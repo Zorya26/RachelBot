@@ -23,7 +23,7 @@ namespace RachelBot
 
             await botClient.SendTextMessageAsync(
                 chatId: e.Message.Chat,
-                text: $"you say {text}?"
+                text: $"Did you say {text}?"
                 ).ConfigureAwait(false);
         }
     }
