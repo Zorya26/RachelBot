@@ -14,5 +14,17 @@ namespace RachelBot
             var me = botClient.GetMeAsync().Result;
             Console.WriteLine($"Bot Id: {me.Id}, Bot name: {me.FirstName}");
         }
+
+        private static async void Bot_OnMessage(object sender, MessageEventArgs e)
+        {
+            var text = e?.Message?.Text;
+            if (text == null) return;
+            Console.WriteLine($"Message: {text} in chat: {e.Message.Chat.Id}");
+
+            await botClient.SendTextMessageAsync(
+                chatId: e.Message.Chat,
+                text: $"you say {text}?"
+                ).ConfigureAwait(false);
+        }
     }
 }
