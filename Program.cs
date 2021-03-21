@@ -10,7 +10,7 @@ namespace RachelBot
         private static ITelegramBotClient botClient;
         static void Main(string[] args)
         {
-            botClient = new TelegramBotClient("1373867194:AAHbsrXtDzusn-8AWywzAELTr_2hLMNtGms") {Timeout = TimeSpan.FromSeconds(10)};
+            botClient = new TelegramBotClient("1373867194:AAHbsrXtDzusn-8AWywzAELTr_2hLMNtGms") {Timeout = TimeSpan.FromSeconds(15)};
             var me = botClient.GetMeAsync().Result;
             Console.WriteLine($"Bot Id: {me.Id}, Bot name: {me.FirstName}");
         }
