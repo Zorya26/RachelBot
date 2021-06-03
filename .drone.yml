@@ -1,0 +1,32 @@
+kind: pipeline
+name: default
+
+steps:
+- name: unit-test
+  image: mcr.microsoft.com/dotnet/sdk:5.0-buster-slim
+  commands:
+  - dotnet test RachelBotTests.csproj -c Release
+  
+steps:
+- name: en
+  image: alpine
+  commands:
+  - echo hello
+
+- name: build
+  image: mcr.microsoft.com/dotnet/sdk:5.0-buster-slim
+  commands:
+  - dotnet build RachelBot.csproj -c Release
+
+- name: slack-notification
+  image: plugins/slack
+  webhook: https://hooks.slack.com/services/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+    username: zori
+    channel: drone
+    icon_emoji: ":rocket:"
+
+- name: send telegram notification
+  image: appleboy/drone-telegram:1.3.9
+  settings:
+    token: 1705604446:SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+    to: 72475749
