@@ -18,12 +18,11 @@ steps:
   commands:
   - dotnet build RachelBot.csproj -c Release
 
-- name: slack-notification
-  image: plugins/slack
-  webhook: https://hooks.slack.com/services/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
-    username: zori
-    channel: drone
-    icon_emoji: ":rocket:"
+steps:
+- name: fr
+  image: alpine
+  commands:
+  - echo bounjour
 
 - name: send telegram notification
   image: appleboy/drone-telegram:1.3.9
