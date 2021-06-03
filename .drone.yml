@@ -7,11 +7,7 @@ steps:
   commands:
   - dotnet test RachelBotTests.csproj -c Release
   
-steps:
-- name: en
-  image: alpine
-  commands:
-  - echo hello
+
 
 - name: build
   image: mcr.microsoft.com/dotnet/sdk:5.0-buster-slim
@@ -24,8 +20,8 @@ steps:
   commands:
   - echo bounjour
 
-- name: send telegram notification
-  image: appleboy/drone-telegram:1.3.9
-  settings:
-    token: 1705604446:SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
-    to: 72475749
+steps:
+- name: en
+  image: alpine
+  commands:
+  - echo hey
