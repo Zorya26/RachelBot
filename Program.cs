@@ -25,7 +25,6 @@ namespace RachelBot
         private static async void Bot_OnMessage(object sender, MessageEventArgs e)
         {
             var text = e?.Message?.Text;
-            if (text == null) return;
             Console.WriteLine($"Message: {text} in chat: {e.Message.Chat.Id}");
 
             await botClient.SendTextMessageAsync(
